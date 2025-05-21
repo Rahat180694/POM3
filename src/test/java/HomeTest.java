@@ -25,6 +25,7 @@ public class HomeTest extends Base{
     @Test
    void checkSearch(){
        String word="kitchen";
+
        home.search(word);
        String textResult=home.searchResult();
        Assert.assertTrue(textResult.contains("kitchen"));

@@ -10,29 +10,29 @@ public class CartTest extends Base {
     @BeforeMethod
 
     void openBrowser(){
-        setup("https://cart.ebay.com/");
+        setup("https://www.ebay.com/");
     cart= PageFactory.initElements(driver,CartPage.class);
     }
 
 
-
-
-    @Test(enabled = false)
-    void checkContinueButton(){
-
+    @Test
+    void checkStartShoppingButton() throws InterruptedException {
+        //driver.manage().timeouts().implicitlyWait(5000);
+        Thread.sleep(5000);
         cart.clickstartShopping();
         String expectedUrl="https://www.ebay.com/";
         String actualUrl=driver.getCurrentUrl();
 
         Assert.assertEquals(actualUrl,expectedUrl);
 
+
 }
 
-@Test(enabled = false)
-    void searchAnything(){
-        cart.Searchforanything();
-        String expectedinUrl="Shoes";
-        Assert.assertTrue(driver.getCurrentUrl().contains(expectedinUrl));
+@Test
+    void searchAnything(String product){
+        cart.Searchsomething(product);
+
+        Assert.assertTrue(driver.getCurrentUrl().contains(product));
 
 }
 }
